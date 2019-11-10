@@ -8,9 +8,9 @@ prev: components-and-props.html
 next: handling-events.html
 ---
 
-This page introduces the concept of state and lifecycle in a React component. You can find a [detailed component API reference here](/docs/react-component.html).
+ഈ പേജ് React Component ന്റെ state, lifecycle എന്നീ ആശയങ്ങൾ അവതരിപ്പിക്കുന്നു. [വിശദമായ Component API റഫറൻസ് നിങ്ങൾക്ക് ഇവിടെ കണ്ടെത്താനാകും](/docs/react-component.html).
 
-Consider the ticking clock example from [one of the previous sections](/docs/rendering-elements.html#updating-the-rendered-element). In [Rendering Elements](/docs/rendering-elements.html#rendering-an-element-into-the-dom), we have only learned one way to update the UI. We call `ReactDOM.render()` to change the rendered output:
+[ മുൻ അദ്ധ്യായത്തിലെ ](/docs/rendering-elements.html#updating-the-rendered-element) ticking clock ഉദാഹരണമായി എടുക്കാം.  [Rendering Elements](/docs/rendering-elements.html#rendering-an-element-into-the-dom), അഥവാ  UI update ചെയ്യാൻ  `ReactDOM.render()` ഫങ്ക്ഷൻ ആണ് ഇതുവരെ നമ്മൾ ഉപയോഗിച്ചത്. 
 
 ```js{8-11}
 function tick() {
@@ -29,11 +29,12 @@ function tick() {
 setInterval(tick, 1000);
 ```
 
+
 [**Try it on CodePen**](https://codepen.io/gaearon/pen/gwoJZk?editors=0010)
 
-In this section, we will learn how to make the `Clock` component truly reusable and encapsulated. It will set up its own timer and update itself every second.
+ഈ അദ്ധ്യായത്തിൽ `Clock` Component നെ പൂർണമായും reusable and encapsulated ആയി എങ്ങനെ ഉണ്ടാക്കാം എന്ന് പഠിക്കാം. ഈ component സ്വന്തമായി ഒരു timer ഉണ്ടാക്കുകയും എല്ലാ സെക്കന്റിലും സ്വയം അപ്ഡേറ്റ് ചെയ്യുകയും ചെയ്യും.
 
-We can start by encapsulating how the clock looks:
+ആദ്യം നമ്മുക്ക് ക്ലോക്കിനെ encapsulate ചെയ്തു നോക്കാം:
 
 ```js{3-6,12}
 function Clock(props) {
@@ -57,9 +58,9 @@ setInterval(tick, 1000);
 
 [**Try it on CodePen**](https://codepen.io/gaearon/pen/dpdoYR?editors=0010)
 
-However, it misses a crucial requirement: the fact that the `Clock` sets up a timer and updates the UI every second should be an implementation detail of the `Clock`.
+എന്നാൽ timer സെറ്റ്  ചെയ്യേണ്ടതും അത് ഓരോ സെക്കന്റിലും അപ്ഡേറ്റ് ചെയ്യേണ്ടതും `Clock` component ന്റെ തന്നെ ഒരു implementation detail ആയിരിക്കണം എന്ന requirement ഇവിടെ നമ്മൾ ചെയ്തില്ല.
 
-Ideally we want to write this once and have the `Clock` update itself:
+അതായതു ക്ലോക്ക് component സ്വയം അപ്ഡേറ്റ് ചെയ്യും എങ്കിൽ നമ്മുടെ കോഡ്  എഴുതാം:
 
 ```js{2}
 ReactDOM.render(
@@ -68,9 +69,9 @@ ReactDOM.render(
 );
 ```
 
-To implement this, we need to add "state" to the `Clock` component.
+ഇതിനായി `Clock` കോംപിനേൻറ് ൽ "state" ആഡ് ചെയ്യണം.
 
-State is similar to props, but it is private and fully controlled by the component.
+props നോട് വളരെ സാദൃശ്യം ഉണ്ടെങ്കിലും, State പൂർണമായും component ന്റെ നിയന്ത്രണത്തിലും private പ്രോപ്പർട്ടിയും ആയിരിക്കും. 
 
 ## Converting a Function to a Class {#converting-a-function-to-a-class}
 
